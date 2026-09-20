@@ -4,7 +4,7 @@ import Section from './Section.jsx'
 import DynamicSection from './DynamicSection.jsx'
 
 function App() {
-  let generalInfo = {
+  const generalInfo = {
     legend: "General Info",
     fields: [
       {name: "full_name", label: "Full name", type: "text"},
@@ -13,7 +13,7 @@ function App() {
     ]
   }
 
-  let eduTemplate = function({key}) {
+  const eduTemplate = function({key}) {
     return (<div className='section-entry' key={key}>
       <div className='field'>
         <label htmlFor={`school_name_${key}`}>School name</label>
