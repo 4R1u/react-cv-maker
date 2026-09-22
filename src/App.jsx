@@ -41,10 +41,24 @@ function App() {
         <Section legend={generalInfo.legend} fields={generalInfo.fields} />
         <DynamicSection legend="Educational Experience" template={eduTemplate}/>
         <DynamicSection legend="Practical Experience" template={empTemplate}/>
-        <button type='button'>Submit</button>
+        <button type='button' onClick={commitInputs}>Submit</button>
       </form>
     </>
   )
 }
 
 export default App
+
+function commitInputs() {
+  const inputs = document.querySelectorAll("input");
+  inputs.forEach(element => {
+    const parent = element.parentElement;
+    const newText = document.createElement("p");
+    newText.textContent = element.value;
+    for (const attr of element.attributes) {
+      newText.setAttribute(attr.name, attr.value);
+    }
+    parent.removeChild(element);
+    parent.appendChild(newText);
+  });
+}
