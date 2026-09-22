@@ -14,20 +14,13 @@ function App() {
   }
 
   const eduTemplate = function({key}) {
-    return (<div className='section-entry' key={key}>
-      <div className='field'>
-        <label htmlFor={`school_name_${key}`}>School name</label>
-        <input type="text" name={`school_name_${key}`} id={`school_name_${key}`} autoComplete='on'/>
-      </div>
-      <div className='field'>
-        <label htmlFor={`study_title_${key}`}>Title of study</label>
-        <input type="text" name={`stduy_title_${key}`} id={`study_title_${key}`} autoComplete='on'/>
-      </div>
-      <div className='field'>
-        <label htmlFor={`date_of_study_${key}`}>Date of study</label>
-        <input type="text" name={`date_of_study_${key}`} id={`date_of_study_${key}`} autoComplete='on'/>
-      </div>
-    </div>);
+    return (<Section legend={"Institute"} key={key} fields={
+      [
+        {name: `school_name_${key}`, label: "School name", type: "text"},
+        {name: `school_title_${key}`, label: "Title of Study", type: "text"},
+        {name: `school_date_${key}`, label: "Date of Study", type: "text"}
+      ]
+    }/>);
   };
 
   return (
