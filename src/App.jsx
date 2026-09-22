@@ -23,12 +23,24 @@ function App() {
     }/>);
   };
 
+  const empTemplate = function({key}) {
+    return (<Section legend={"Organization"} key={key} fields={
+      [
+        {name: `comp_name_${key}`, label: "Company name", type: "text"},
+        {name: `comp_title_${key}`, label: "Position Title", type: "text"},
+        {name: `comp_role_${key}`, label: "Main Responsibilites", type: "text"},
+        {name: `comp_date_${key}`, label: "Start and end date", type: "text"}
+      ]
+    }/>);
+  };
+
   return (
     <>
       <Header />
       <form>
         <Section legend={generalInfo.legend} fields={generalInfo.fields} />
         <DynamicSection legend="Educational Experience" template={eduTemplate}/>
+        <DynamicSection legend="Practical Experience" template={empTemplate}/>
         <button type='button'>Submit</button>
       </form>
     </>
