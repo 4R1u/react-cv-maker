@@ -51,10 +51,14 @@ export default App
 
 function toggleInputs() {
   const inputs = document.querySelectorAll("input").length;
-  if (inputs > 0)
+  if (inputs > 0){
     commitInputs();
-  else
+    document.querySelector(".submit-button").textContent = "Edit";
+  }
+  else {
     restoreInputs();
+    document.querySelector(".submit-button").textContent = "Submit";
+  }
 }
 
 function commitInputs() {
