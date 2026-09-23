@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Header from './header.jsx'
-import Section from './Section.jsx'
-import DynamicSection from './DynamicSection.jsx'
+import Section from './components/Section.jsx'
+import DynamicSection from './components/DynamicSection.jsx'
 
 function App() {
   const generalInfo = {
