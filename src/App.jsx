@@ -59,6 +59,10 @@ function toggleInputs() {
     restoreInputs();
     document.querySelector(".submit-button").textContent = "Submit";
   }
+
+  document.querySelectorAll(".dynamic-section button").forEach( (btn) => {
+    btn.classList.toggle("hidden");
+  } );
 }
 
 function commitInputs() {
