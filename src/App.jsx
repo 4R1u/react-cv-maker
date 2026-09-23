@@ -41,13 +41,21 @@ function App() {
         <Section legend={generalInfo.legend} fields={generalInfo.fields} />
         <DynamicSection legend="Educational Experience" template={eduTemplate}/>
         <DynamicSection legend="Practical Experience" template={empTemplate}/>
-        <button type='button' onClick={commitInputs}>Submit</button>
+        <button className={"submit-button"} type='button' onClick={toggleInputs}>Submit</button>
       </form>
     </>
   )
 }
 
 export default App
+
+function toggleInputs() {
+  const inputs = document.querySelectorAll("input").length;
+  if (inputs > 0)
+    commitInputs();
+  else
+    restoreInputs();
+}
 
 function commitInputs() {
   const inputs = document.querySelectorAll("input");
@@ -60,5 +68,19 @@ function commitInputs() {
     }
     parent.removeChild(element);
     parent.appendChild(newText);
+  });
+}
+
+function restoreInputs() {
+  const ps = document.querySelectorAll("p");
+  ps.forEach(element => {
+    const parent = element.parentElement;
+    const newInput = document.createElement("input");
+    newInput.value = element.textContent;
+    for (const attr of element.attributes) {
+      newInput.setAttribute(attr.name, attr.value);
+    }
+    parent.removeChild(element);
+    parent.appendChild(newInput);
   });
 }
