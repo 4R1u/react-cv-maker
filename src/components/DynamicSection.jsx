@@ -1,16 +1,36 @@
 import { useState } from "react";
 
 function DynamicSection({ legend, name, template }) {
-  const [list, setList] = useState([template({ key: crypto.randomUUID() })]);
+  const firstkey = crypto.randomUUID();
+  const [list, setList] = useState({ [firstkey]: template({ key: firstkey }) });
 
   function addEntry() {
-    setList(list.concat(template({ key: crypto.randomUUID() })));
+    const newKey = crypto.randomUUID();
+    setList({ ...list, [newKey]: template({ key: newKey }) });
+  }
+
+  function removeEntry(key) {
+    const newList = { ...list };
+    delete newList[key];
+    setList(newList);
   }
 
   return (
     <fieldset className="dynamic-section section" data-name={name}>
       <legend>{legend}</legend>
-      {list.map((field) => field)}
+      {Object.keys(list).map((key) => (
+        <div className="removable-entry" key={key}>
+          {list[key]}{" "}
+          <button
+            type="button"
+            onClick={() => {
+              removeEntry(key);
+            }}
+          >
+            Remove
+          </button>
+        </div>
+      ))}
       <button type="button" onClick={addEntry}>
         Add Entry
       </button>
