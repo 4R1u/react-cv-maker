@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Header from "./components/header.jsx";
 import Section from "./components/Section.jsx";
 import DynamicSection from "./components/DynamicSection.jsx";
