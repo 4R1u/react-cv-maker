@@ -13,7 +13,7 @@ input {
 }
 
 form > fieldset {
-  width: 500px;
+  width: calc(min(90vw, 600px));
 }
 
 form {
